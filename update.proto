@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package update;
+
+option go_package = "github.com/sologenic/fs-update-model;update";
+
+message Subscribe {
+    Action Action = 1;
+    Subscription Subscription = 2;
+}
+
+message Subscription {
+    Method Method = 2;
+    string ID = 3;
+    string Network = 4;
+}
+
+enum Action {
+    SUBSCRIBE = 0;
+    UNSUBSCRIBE = 1;
+    CLOSE = 2;
+    RESPONSE = 3;
+    PING = 4;
+}
+
+enum Method {
+    NOT_USED = 0; // Left unused on purpose
+    POOL = 1; // Represents an update to a pool (requires pool id in the subscription and contains pool ID in the message)
+    NEW_POOL = 2; // Fired if a new pool is created. Contains the pool ID
+    PRICE_VOLUME = 3; // Represents an update to a pool price volume chart (requires pool id in the subscription and contains pool ID in the message)
+    TRADES_FOR_ACCOUNT = 4; // Represents an update to trades for an account (requires account id in the subscription, returns pool id in the message)
+    LIQUIDITY_VOLUME_FEE = 5; // Represents an update to all pool liquidity, volume and fee (requires no ID in the subscription, returns no ID in the message)
+    NOTIFICATION = 6; // Represents a new notification (requires no ID in the subscription, returns no ID in the message)
+}

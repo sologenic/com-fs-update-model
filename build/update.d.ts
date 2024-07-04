@@ -1,0 +1,119 @@
+import _m0 from "protobufjs/minimal";
+export declare const protobufPackage = "update";
+export declare enum Action {
+    SUBSCRIBE = 0,
+    UNSUBSCRIBE = 1,
+    CLOSE = 2,
+    RESPONSE = 3,
+    PING = 4,
+    UNRECOGNIZED = -1
+}
+export declare function actionFromJSON(object: any): Action;
+export declare function actionToJSON(object: Action): string;
+export declare enum Method {
+    /** NOT_USED - Left unused on purpose */
+    NOT_USED = 0,
+    /** POOL - Represents an update to a pool (requires pool id in the subscription and contains pool ID in the message) */
+    POOL = 1,
+    /** NEW_POOL - Fired if a new pool is created. Contains the pool ID */
+    NEW_POOL = 2,
+    /** PRICE_VOLUME - Represents an update to a pool price volume chart (requires pool id in the subscription and contains pool ID in the message) */
+    PRICE_VOLUME = 3,
+    /** TRADES_FOR_ACCOUNT - Represents an update to trades for an account (requires account id in the subscription, returns pool id in the message) */
+    TRADES_FOR_ACCOUNT = 4,
+    /** LIQUIDITY_VOLUME_FEE - Represents an update to all pool liquidity, volume and fee (requires no ID in the subscription, returns no ID in the message) */
+    LIQUIDITY_VOLUME_FEE = 5,
+    /** NOTIFICATION - Represents a new notification (requires no ID in the subscription, returns no ID in the message) */
+    NOTIFICATION = 6,
+    UNRECOGNIZED = -1
+}
+export declare function methodFromJSON(object: any): Method;
+export declare function methodToJSON(object: Method): string;
+export interface Subscribe {
+    Action: Action;
+    Subscription: Subscription | undefined;
+}
+export interface Subscription {
+    Method: Method;
+    ID: string;
+    Network: string;
+}
+export declare const Subscribe: {
+    encode(message: Subscribe, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Subscribe;
+    fromJSON(object: any): Subscribe;
+    toJSON(message: Subscribe): unknown;
+    create<I extends {
+        Action?: Action | undefined;
+        Subscription?: {
+            Method?: Method | undefined;
+            ID?: string | undefined;
+            Network?: string | undefined;
+        } | undefined;
+    } & {
+        Action?: Action | undefined;
+        Subscription?: ({
+            Method?: Method | undefined;
+            ID?: string | undefined;
+            Network?: string | undefined;
+        } & {
+            Method?: Method | undefined;
+            ID?: string | undefined;
+            Network?: string | undefined;
+        } & { [K in Exclude<keyof I["Subscription"], keyof Subscription>]: never; }) | undefined;
+    } & { [K_1 in Exclude<keyof I, keyof Subscribe>]: never; }>(base?: I | undefined): Subscribe;
+    fromPartial<I_1 extends {
+        Action?: Action | undefined;
+        Subscription?: {
+            Method?: Method | undefined;
+            ID?: string | undefined;
+            Network?: string | undefined;
+        } | undefined;
+    } & {
+        Action?: Action | undefined;
+        Subscription?: ({
+            Method?: Method | undefined;
+            ID?: string | undefined;
+            Network?: string | undefined;
+        } & {
+            Method?: Method | undefined;
+            ID?: string | undefined;
+            Network?: string | undefined;
+        } & { [K_2 in Exclude<keyof I_1["Subscription"], keyof Subscription>]: never; }) | undefined;
+    } & { [K_3 in Exclude<keyof I_1, keyof Subscribe>]: never; }>(object: I_1): Subscribe;
+};
+export declare const Subscription: {
+    encode(message: Subscription, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): Subscription;
+    fromJSON(object: any): Subscription;
+    toJSON(message: Subscription): unknown;
+    create<I extends {
+        Method?: Method | undefined;
+        ID?: string | undefined;
+        Network?: string | undefined;
+    } & {
+        Method?: Method | undefined;
+        ID?: string | undefined;
+        Network?: string | undefined;
+    } & { [K in Exclude<keyof I, keyof Subscription>]: never; }>(base?: I | undefined): Subscription;
+    fromPartial<I_1 extends {
+        Method?: Method | undefined;
+        ID?: string | undefined;
+        Network?: string | undefined;
+    } & {
+        Method?: Method | undefined;
+        ID?: string | undefined;
+        Network?: string | undefined;
+    } & { [K_1 in Exclude<keyof I_1, keyof Subscription>]: never; }>(object: I_1): Subscription;
+};
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+export type DeepPartial<T> = T extends Builtin ? T : T extends globalThis.Array<infer U> ? globalThis.Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>> : T extends {} ? {
+    [K in keyof T]?: DeepPartial<T[K]>;
+} : Partial<T>;
+type KeysOfUnion<T> = T extends T ? keyof T : never;
+export type Exact<P, I extends P> = P extends Builtin ? P : P & {
+    [K in keyof P]: Exact<P[K], I[K]>;
+} & {
+    [K in Exclude<keyof I, KeysOfUnion<P>>]: never;
+};
+export {};
