@@ -13,18 +13,9 @@ export declare function actionToJSON(object: Action): string;
 export declare enum Method {
     /** NOT_USED - Left unused on purpose */
     NOT_USED = 0,
-    /** POOL - Represents an update to a pool (requires pool id in the subscription and contains pool ID in the message) */
-    POOL = 1,
-    /** NEW_POOL - Fired if a new pool is created. Contains the pool ID */
-    NEW_POOL = 2,
-    /** PRICE_VOLUME - Represents an update to a pool price volume chart (requires pool id in the subscription and contains pool ID in the message) */
-    PRICE_VOLUME = 3,
-    /** TRADES_FOR_ACCOUNT - Represents an update to trades for an account (requires account id in the subscription, returns pool id in the message) */
-    TRADES_FOR_ACCOUNT = 4,
-    /** LIQUIDITY_VOLUME_FEE - Represents an update to all pool liquidity, volume and fee (requires no ID in the subscription, returns no ID in the message) */
-    LIQUIDITY_VOLUME_FEE = 5,
     /** NOTIFICATION - Represents a new notification (requires no ID in the subscription, returns no ID in the message) */
-    NOTIFICATION = 6,
+    NOTIFICATION = 1,
+    NEW_KYC_STUCK = 2,
     UNRECOGNIZED = -1
 }
 export declare function methodFromJSON(object: any): Method;
