@@ -1,4 +1,5 @@
 import _m0 from "protobufjs/minimal";
+import { Network } from "./sologenic/com-fs-utils-lib/models/metadata/metadata";
 export declare const protobufPackage = "update";
 export declare enum Action {
     SUBSCRIBE = 0,
@@ -27,7 +28,8 @@ export interface Subscribe {
 export interface Subscription {
     Method: Method;
     ID: string;
-    Network: string;
+    Network: Network;
+    OrganizationID: string;
 }
 export declare const Subscribe: {
     encode(message: Subscribe, writer?: _m0.Writer): _m0.Writer;
@@ -39,18 +41,21 @@ export declare const Subscribe: {
         Subscription?: {
             Method?: Method | undefined;
             ID?: string | undefined;
-            Network?: string | undefined;
+            Network?: Network | undefined;
+            OrganizationID?: string | undefined;
         } | undefined;
     } & {
         Action?: Action | undefined;
         Subscription?: ({
             Method?: Method | undefined;
             ID?: string | undefined;
-            Network?: string | undefined;
+            Network?: Network | undefined;
+            OrganizationID?: string | undefined;
         } & {
             Method?: Method | undefined;
             ID?: string | undefined;
-            Network?: string | undefined;
+            Network?: Network | undefined;
+            OrganizationID?: string | undefined;
         } & { [K in Exclude<keyof I["Subscription"], keyof Subscription>]: never; }) | undefined;
     } & { [K_1 in Exclude<keyof I, keyof Subscribe>]: never; }>(base?: I | undefined): Subscribe;
     fromPartial<I_1 extends {
@@ -58,18 +63,21 @@ export declare const Subscribe: {
         Subscription?: {
             Method?: Method | undefined;
             ID?: string | undefined;
-            Network?: string | undefined;
+            Network?: Network | undefined;
+            OrganizationID?: string | undefined;
         } | undefined;
     } & {
         Action?: Action | undefined;
         Subscription?: ({
             Method?: Method | undefined;
             ID?: string | undefined;
-            Network?: string | undefined;
+            Network?: Network | undefined;
+            OrganizationID?: string | undefined;
         } & {
             Method?: Method | undefined;
             ID?: string | undefined;
-            Network?: string | undefined;
+            Network?: Network | undefined;
+            OrganizationID?: string | undefined;
         } & { [K_2 in Exclude<keyof I_1["Subscription"], keyof Subscription>]: never; }) | undefined;
     } & { [K_3 in Exclude<keyof I_1, keyof Subscribe>]: never; }>(object: I_1): Subscribe;
 };
@@ -81,20 +89,24 @@ export declare const Subscription: {
     create<I extends {
         Method?: Method | undefined;
         ID?: string | undefined;
-        Network?: string | undefined;
+        Network?: Network | undefined;
+        OrganizationID?: string | undefined;
     } & {
         Method?: Method | undefined;
         ID?: string | undefined;
-        Network?: string | undefined;
+        Network?: Network | undefined;
+        OrganizationID?: string | undefined;
     } & { [K in Exclude<keyof I, keyof Subscription>]: never; }>(base?: I | undefined): Subscription;
     fromPartial<I_1 extends {
         Method?: Method | undefined;
         ID?: string | undefined;
-        Network?: string | undefined;
+        Network?: Network | undefined;
+        OrganizationID?: string | undefined;
     } & {
         Method?: Method | undefined;
         ID?: string | undefined;
-        Network?: string | undefined;
+        Network?: Network | undefined;
+        OrganizationID?: string | undefined;
     } & { [K_1 in Exclude<keyof I_1, keyof Subscription>]: never; }>(object: I_1): Subscription;
 };
 type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
