@@ -67,6 +67,7 @@ export enum Method {
   /** NOTIFICATION - Represents a new notification (requires no ID in the subscription, returns no ID in the message) */
   NOTIFICATION = 1,
   NEW_KYC_STUCK = 2,
+  NEW_COMMENT_REPLY = 3,
   UNRECOGNIZED = -1,
 }
 
@@ -81,6 +82,9 @@ export function methodFromJSON(object: any): Method {
     case 2:
     case "NEW_KYC_STUCK":
       return Method.NEW_KYC_STUCK;
+    case 3:
+    case "NEW_COMMENT_REPLY":
+      return Method.NEW_COMMENT_REPLY;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -96,6 +100,8 @@ export function methodToJSON(object: Method): string {
       return "NOTIFICATION";
     case Method.NEW_KYC_STUCK:
       return "NEW_KYC_STUCK";
+    case Method.NEW_COMMENT_REPLY:
+      return "NEW_COMMENT_REPLY";
     case Method.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";
