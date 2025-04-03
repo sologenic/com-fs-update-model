@@ -30,5 +30,4 @@ enum Method {
     NOT_USED = 0; // Left unused on purpose
     NOTIFICATION = 1; // Represents a new notification (requires no ID in the subscription, returns no ID in the message)
     NEW_KYC_STUCK = 2;
-    NEW_COMMENT_REPLY = 3;
 }

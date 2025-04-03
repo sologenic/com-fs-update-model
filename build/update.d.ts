@@ -17,7 +17,6 @@ export declare enum Method {
     /** NOTIFICATION - Represents a new notification (requires no ID in the subscription, returns no ID in the message) */
     NOTIFICATION = 1,
     NEW_KYC_STUCK = 2,
-    NEW_COMMENT_REPLY = 3,
     UNRECOGNIZED = -1
 }
 export declare function methodFromJSON(object: any): Method;

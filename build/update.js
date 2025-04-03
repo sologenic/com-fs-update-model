@@ -63,7 +63,6 @@ export var Method;
     /** NOTIFICATION - Represents a new notification (requires no ID in the subscription, returns no ID in the message) */
     Method[Method["NOTIFICATION"] = 1] = "NOTIFICATION";
     Method[Method["NEW_KYC_STUCK"] = 2] = "NEW_KYC_STUCK";
-    Method[Method["NEW_COMMENT_REPLY"] = 3] = "NEW_COMMENT_REPLY";
     Method[Method["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
 })(Method || (Method = {}));
 export function methodFromJSON(object) {
@@ -77,9 +76,6 @@ export function methodFromJSON(object) {
         case 2:
         case "NEW_KYC_STUCK":
             return Method.NEW_KYC_STUCK;
-        case 3:
-        case "NEW_COMMENT_REPLY":
-            return Method.NEW_COMMENT_REPLY;
         case -1:
         case "UNRECOGNIZED":
         default:
@@ -94,8 +90,6 @@ export function methodToJSON(object) {
             return "NOTIFICATION";
         case Method.NEW_KYC_STUCK:
             return "NEW_KYC_STUCK";
-        case Method.NEW_COMMENT_REPLY:
-            return "NEW_COMMENT_REPLY";
         case Method.UNRECOGNIZED:
         default:
             return "UNRECOGNIZED";
