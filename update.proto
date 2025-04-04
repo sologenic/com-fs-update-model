@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package update;
 
-option go_package = "github.com/sologenic/fs-update-model;update";
+option go_package = "github.com/sologenic/com-fs-update-model;update";
+
+import "sologenic/com-fs-utils-lib/models/metadata/metadata.proto";
 
 message Subscribe {
     Action Action = 1;
@@ -10,9 +12,10 @@ message Subscribe {
 }
 
 message Subscription {
-    Method Method = 2;
-    string ID = 3;
-    string Network = 4;
+    Method Method = 1;
+    string ID = 2;
+    metadata.Network Network = 3;
+    string OrganizationID = 4;
 }
 
 enum Action {
