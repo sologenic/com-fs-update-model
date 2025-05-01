@@ -16,6 +16,7 @@ message Subscription {
     string ID = 2;
     metadata.Network Network = 3;
     string OrganizationID = 4;
+    optional string Content = 5;
 }
 
 enum Action {
@@ -30,4 +31,6 @@ enum Method {
     NOT_USED = 0; // Left unused on purpose
     NOTIFICATION = 1; // Represents a new notification (requires no ID in the subscription, returns no ID in the message)
     NEW_KYC_STUCK = 2;
+    AED = 3; // ID: {currency1}_{currency2}_{interval} (e.g. wusd_1_appl_1_30m)
+    TICKER = 4; // ID: {currency1}_{currency2} (e.g. wusd_1_appl_1)
 }

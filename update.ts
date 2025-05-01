@@ -67,6 +67,10 @@ export enum Method {
   /** NOTIFICATION - Represents a new notification (requires no ID in the subscription, returns no ID in the message) */
   NOTIFICATION = 1,
   NEW_KYC_STUCK = 2,
+  /** AED - ID: {currency1}_{currency2}_{interval} (e.g. wusd_1_appl_1_30m) */
+  AED = 3,
+  /** TICKER - ID: {currency1}_{currency2} (e.g. wusd_1_appl_1) */
+  TICKER = 4,
   UNRECOGNIZED = -1,
 }
 
@@ -81,6 +85,12 @@ export function methodFromJSON(object: any): Method {
     case 2:
     case "NEW_KYC_STUCK":
       return Method.NEW_KYC_STUCK;
+    case 3:
+    case "AED":
+      return Method.AED;
+    case 4:
+    case "TICKER":
+      return Method.TICKER;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -96,6 +106,10 @@ export function methodToJSON(object: Method): string {
       return "NOTIFICATION";
     case Method.NEW_KYC_STUCK:
       return "NEW_KYC_STUCK";
+    case Method.AED:
+      return "AED";
+    case Method.TICKER:
+      return "TICKER";
     case Method.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";
@@ -112,6 +126,7 @@ export interface Subscription {
   ID: string;
   Network: Network;
   OrganizationID: string;
+  Content?: string | undefined;
 }
 
 function createBaseSubscribe(): Subscribe {
@@ -191,7 +206,7 @@ export const Subscribe = {
 };
 
 function createBaseSubscription(): Subscription {
-  return { Method: 0, ID: "", Network: 0, OrganizationID: "" };
+  return { Method: 0, ID: "", Network: 0, OrganizationID: "", Content: undefined };
 }
 
 export const Subscription = {
@@ -207,6 +222,9 @@ export const Subscription = {
     }
     if (message.OrganizationID !== "") {
       writer.uint32(34).string(message.OrganizationID);
+    }
+    if (message.Content !== undefined) {
+      writer.uint32(42).string(message.Content);
     }
     return writer;
   },
@@ -246,6 +264,13 @@ export const Subscription = {
 
           message.OrganizationID = reader.string();
           continue;
+        case 5:
+          if (tag !== 42) {
+            break;
+          }
+
+          message.Content = reader.string();
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -261,6 +286,7 @@ export const Subscription = {
       ID: isSet(object.ID) ? globalThis.String(object.ID) : "",
       Network: isSet(object.Network) ? networkFromJSON(object.Network) : 0,
       OrganizationID: isSet(object.OrganizationID) ? globalThis.String(object.OrganizationID) : "",
+      Content: isSet(object.Content) ? globalThis.String(object.Content) : undefined,
     };
   },
 
@@ -278,6 +304,9 @@ export const Subscription = {
     if (message.OrganizationID !== "") {
       obj.OrganizationID = message.OrganizationID;
     }
+    if (message.Content !== undefined) {
+      obj.Content = message.Content;
+    }
     return obj;
   },
 
@@ -290,6 +319,7 @@ export const Subscription = {
     message.ID = object.ID ?? "";
     message.Network = object.Network ?? 0;
     message.OrganizationID = object.OrganizationID ?? "";
+    message.Content = object.Content ?? undefined;
     return message;
   },
 };

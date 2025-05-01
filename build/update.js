@@ -63,6 +63,10 @@ export var Method;
     /** NOTIFICATION - Represents a new notification (requires no ID in the subscription, returns no ID in the message) */
     Method[Method["NOTIFICATION"] = 1] = "NOTIFICATION";
     Method[Method["NEW_KYC_STUCK"] = 2] = "NEW_KYC_STUCK";
+    /** AED - ID: {currency1}_{currency2}_{interval} (e.g. wusd_1_appl_1_30m) */
+    Method[Method["AED"] = 3] = "AED";
+    /** TICKER - ID: {currency1}_{currency2} (e.g. wusd_1_appl_1) */
+    Method[Method["TICKER"] = 4] = "TICKER";
     Method[Method["UNRECOGNIZED"] = -1] = "UNRECOGNIZED";
 })(Method || (Method = {}));
 export function methodFromJSON(object) {
@@ -76,6 +80,12 @@ export function methodFromJSON(object) {
         case 2:
         case "NEW_KYC_STUCK":
             return Method.NEW_KYC_STUCK;
+        case 3:
+        case "AED":
+            return Method.AED;
+        case 4:
+        case "TICKER":
+            return Method.TICKER;
         case -1:
         case "UNRECOGNIZED":
         default:
@@ -90,6 +100,10 @@ export function methodToJSON(object) {
             return "NOTIFICATION";
         case Method.NEW_KYC_STUCK:
             return "NEW_KYC_STUCK";
+        case Method.AED:
+            return "AED";
+        case Method.TICKER:
+            return "TICKER";
         case Method.UNRECOGNIZED:
         default:
             return "UNRECOGNIZED";
@@ -165,7 +179,7 @@ export const Subscribe = {
     },
 };
 function createBaseSubscription() {
-    return { Method: 0, ID: "", Network: 0, OrganizationID: "" };
+    return { Method: 0, ID: "", Network: 0, OrganizationID: "", Content: undefined };
 }
 export const Subscription = {
     encode(message, writer = _m0.Writer.create()) {
@@ -180,6 +194,9 @@ export const Subscription = {
         }
         if (message.OrganizationID !== "") {
             writer.uint32(34).string(message.OrganizationID);
+        }
+        if (message.Content !== undefined) {
+            writer.uint32(42).string(message.Content);
         }
         return writer;
     },
@@ -214,6 +231,12 @@ export const Subscription = {
                     }
                     message.OrganizationID = reader.string();
                     continue;
+                case 5:
+                    if (tag !== 42) {
+                        break;
+                    }
+                    message.Content = reader.string();
+                    continue;
             }
             if ((tag & 7) === 4 || tag === 0) {
                 break;
@@ -228,6 +251,7 @@ export const Subscription = {
             ID: isSet(object.ID) ? globalThis.String(object.ID) : "",
             Network: isSet(object.Network) ? networkFromJSON(object.Network) : 0,
             OrganizationID: isSet(object.OrganizationID) ? globalThis.String(object.OrganizationID) : "",
+            Content: isSet(object.Content) ? globalThis.String(object.Content) : undefined,
         };
     },
     toJSON(message) {
@@ -244,18 +268,22 @@ export const Subscription = {
         if (message.OrganizationID !== "") {
             obj.OrganizationID = message.OrganizationID;
         }
+        if (message.Content !== undefined) {
+            obj.Content = message.Content;
+        }
         return obj;
     },
     create(base) {
         return Subscription.fromPartial(base !== null && base !== void 0 ? base : {});
     },
     fromPartial(object) {
-        var _a, _b, _c, _d;
+        var _a, _b, _c, _d, _e;
         const message = createBaseSubscription();
         message.Method = (_a = object.Method) !== null && _a !== void 0 ? _a : 0;
         message.ID = (_b = object.ID) !== null && _b !== void 0 ? _b : "";
         message.Network = (_c = object.Network) !== null && _c !== void 0 ? _c : 0;
         message.OrganizationID = (_d = object.OrganizationID) !== null && _d !== void 0 ? _d : "";
+        message.Content = (_e = object.Content) !== null && _e !== void 0 ? _e : undefined;
         return message;
     },
 };
