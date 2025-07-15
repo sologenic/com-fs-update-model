@@ -17,6 +17,10 @@ export declare enum Method {
     /** NOTIFICATION - Represents a new notification (requires no ID in the subscription, returns no ID in the message) */
     NOTIFICATION = 1,
     NEW_KYC_STUCK = 2,
+    /** AED - ID: {currency1}_{currency2}_{interval} (e.g. wusd_1_appl_1_30m) */
+    AED = 3,
+    /** TICKER - ID: {currency1}_{currency2} (e.g. wusd_1_appl_1) */
+    TICKER = 4,
     UNRECOGNIZED = -1
 }
 export declare function methodFromJSON(object: any): Method;
@@ -30,6 +34,7 @@ export interface Subscription {
     ID: string;
     Network: Network;
     OrganizationID: string;
+    Content?: string | undefined;
 }
 export declare const Subscribe: {
     encode(message: Subscribe, writer?: _m0.Writer): _m0.Writer;
@@ -43,6 +48,7 @@ export declare const Subscribe: {
             ID?: string | undefined;
             Network?: Network | undefined;
             OrganizationID?: string | undefined;
+            Content?: string | undefined;
         } | undefined;
     } & {
         Action?: Action | undefined;
@@ -51,11 +57,13 @@ export declare const Subscribe: {
             ID?: string | undefined;
             Network?: Network | undefined;
             OrganizationID?: string | undefined;
+            Content?: string | undefined;
         } & {
             Method?: Method | undefined;
             ID?: string | undefined;
             Network?: Network | undefined;
             OrganizationID?: string | undefined;
+            Content?: string | undefined;
         } & { [K in Exclude<keyof I["Subscription"], keyof Subscription>]: never; }) | undefined;
     } & { [K_1 in Exclude<keyof I, keyof Subscribe>]: never; }>(base?: I | undefined): Subscribe;
     fromPartial<I_1 extends {
@@ -65,6 +73,7 @@ export declare const Subscribe: {
             ID?: string | undefined;
             Network?: Network | undefined;
             OrganizationID?: string | undefined;
+            Content?: string | undefined;
         } | undefined;
     } & {
         Action?: Action | undefined;
@@ -73,11 +82,13 @@ export declare const Subscribe: {
             ID?: string | undefined;
             Network?: Network | undefined;
             OrganizationID?: string | undefined;
+            Content?: string | undefined;
         } & {
             Method?: Method | undefined;
             ID?: string | undefined;
             Network?: Network | undefined;
             OrganizationID?: string | undefined;
+            Content?: string | undefined;
         } & { [K_2 in Exclude<keyof I_1["Subscription"], keyof Subscription>]: never; }) | undefined;
     } & { [K_3 in Exclude<keyof I_1, keyof Subscribe>]: never; }>(object: I_1): Subscribe;
 };
@@ -91,22 +102,26 @@ export declare const Subscription: {
         ID?: string | undefined;
         Network?: Network | undefined;
         OrganizationID?: string | undefined;
+        Content?: string | undefined;
     } & {
         Method?: Method | undefined;
         ID?: string | undefined;
         Network?: Network | undefined;
         OrganizationID?: string | undefined;
+        Content?: string | undefined;
     } & { [K in Exclude<keyof I, keyof Subscription>]: never; }>(base?: I | undefined): Subscription;
     fromPartial<I_1 extends {
         Method?: Method | undefined;
         ID?: string | undefined;
         Network?: Network | undefined;
         OrganizationID?: string | undefined;
+        Content?: string | undefined;
     } & {
         Method?: Method | undefined;
         ID?: string | undefined;
         Network?: Network | undefined;
         OrganizationID?: string | undefined;
+        Content?: string | undefined;
     } & { [K_1 in Exclude<keyof I_1, keyof Subscription>]: never; }>(object: I_1): Subscription;
 };
 type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
