@@ -19,6 +19,7 @@ export declare enum Method {
     NEW_KYC_STUCK = 2,
     /** AED - ID: {currency1}_{currency2}_{interval} (e.g. wusd_1_appl_1_30m) */
     AED = 3,
+    ALPACA_FEED = 4,
     UNRECOGNIZED = -1
 }
 export declare function methodFromJSON(object: any): Method;
