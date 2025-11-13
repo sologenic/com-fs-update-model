@@ -20,6 +20,7 @@ export declare enum Method {
     /** AED - ID: {currency1}_{currency2}_{interval} (e.g. wusd_1_appl_1_30m) */
     AED = 3,
     ALPACA_FEED = 4,
+    SIGNING = 5,
     UNRECOGNIZED = -1
 }
 export declare function methodFromJSON(object: any): Method;
