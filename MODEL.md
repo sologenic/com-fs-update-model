@@ -7,6 +7,9 @@
   - [Messages](#messages)
     - [Subscribe](#subscribe)
     - [Subscription](#subscription)
+  - [Enums](#enums)
+    - [Action](#action)
+    - [Method](#method)
 - [Version Information](#version-information)
 - [Support](#support)
 
@@ -74,6 +77,57 @@ The `Subscription` message provides subscription data and operations.
 **Important Notes:**
 - The `ID` field must match a valid identifier format
 - The `OrganizationID` must be a valid UUID format
+
+### Enums
+
+#### Action {#action}
+
+The `Action` enum defines the possible states or types for update, allowing for classification and state management.
+
+**Value Table:**
+
+| Value Name | Number | Description |
+|------------|--------|-------------|
+| SUBSCRIBE | 0 | Default/unused value (protobuf convention) |
+| UNSUBSCRIBE | 1 | Unsubscribe state or type |
+| CLOSE | 2 | Close state or type |
+| RESPONSE | 3 | Response state or type |
+| PING | 4 | Ping state or type |
+
+**Use Cases:**
+- Setting action for items
+- Filtering items by action in queries
+- Enforcing business logic based on action
+
+**Important Notes:**
+- Values with `NOT_USED` prefix or number 0 follow protobuf conventions for default enum values and should not be actively used
+- Only valid action values should be used in production code
+- Action changes should be tracked in audit trails for compliance purposes
+
+#### Method {#method}
+
+The `Method` enum defines the possible states or types for update, allowing for classification and state management.
+
+**Value Table:**
+
+| Value Name | Number | Description |
+|------------|--------|-------------|
+| NOT_USED | 0 | Default/unused value (protobuf convention) |
+| NOTIFICATION | 1 | Notification state or type |
+| NEW_KYC_STUCK | 2 | New Kyc Stuck state or type |
+| AED | 3 | Aed state or type |
+| ALPACA_FEED | 4 | Alpaca Feed state or type |
+| SIGNING | 5 | Signing state or type |
+
+**Use Cases:**
+- Setting method for items
+- Filtering items by method in queries
+- Enforcing business logic based on method
+
+**Important Notes:**
+- Values with `NOT_USED` prefix or number 0 follow protobuf conventions for default enum values and should not be actively used
+- Only valid method values should be used in production code
+- Method changes should be tracked in audit trails for compliance purposes
 
 ## Version Information
 
