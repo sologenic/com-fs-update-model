@@ -14,7 +14,7 @@
 
 The Update provides a comprehensive data structure for managing update within the system. This model supports identification: provides unique identifiers for update, metadata and audit: includes metadata and audit trails for tracking changes, organizational context: links items to organizations via organizationid, and more. 
 
-Key features of the {model_name.lower()} model include:
+Key features of the update model include:
 - **Identification**: Provides unique identifiers for update
 - **Metadata and Audit**: Includes metadata and audit trails for tracking changes
 - **Organizational Context**: Links items to organizations via OrganizationID
