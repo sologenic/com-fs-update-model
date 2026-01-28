@@ -21,6 +21,7 @@ export declare enum Method {
     AED = 3,
     ALPACA_FEED = 4,
     SIGNING = 5,
+    TX_SIGNED = 6,
     UNRECOGNIZED = -1
 }
 export declare function methodFromJSON(object: any): Method;
