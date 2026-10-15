@@ -4,14 +4,15 @@
   "description": "",
   "main": "build/update.js",
   "scripts": {
-    "build-ts": "rm -rf build/ && npx tsc"
+    "build-ts": "rm -rf build/ && npx tsc -p tsconfig.json"
   },
   "dependencies": {
     "protobufjs": "^8.7.1"
   },
   "devDependencies": {
-    "typescript": "^4.9.4",
+    "typescript": "^4.9.5",
     "protoc-gen-ts": "^0.8.5",
-    "ts-proto": "^2.12.0"
+    "ts-proto": "^1.141.0",
+    "@types/node": "^20.12.12"
   }
 }
