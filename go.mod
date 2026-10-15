@@ -3,7 +3,7 @@ module github.com/sologenic/com-fs-update-model
 go 1.27.1
 
 require (
-	github.com/sologenic/com-fs-utils-lib/models/metadata v0.0.0-20261015114509-385fbabbb477
+	github.com/sologenic/com-fs-utils-lib/models/metadata v0.0.0-20261015130520-de4f93512d97
 	google.golang.org/protobuf v1.36.11
 )
 
@@ -12,6 +12,6 @@ require (
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.22 // indirect
 	github.com/rs/zerolog v1.35.1 // indirect
-	github.com/sologenic/com-fs-utils-internal-lib/go/logger v0.0.0-20261015114510-759dd7e97daf // indirect
+	github.com/sologenic/com-fs-utils-internal-lib/go/logger v0.0.0-20261015130520-f7a6a5e49aa5 // indirect
 	golang.org/x/sys v0.44.0 // indirect
 )
