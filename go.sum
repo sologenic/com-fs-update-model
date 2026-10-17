@@ -8,10 +8,10 @@ github.com/mattn/go-isatty v0.0.22 h1:j8l17JJ9i6VGPUFUYoTUKPSgKe/83EYU2zBC7YNKMw
 github.com/mattn/go-isatty v0.0.22/go.mod h1:ZXfXG4SQHsB/w3ZeOYbR0PrPwLy+n6xiMrJlRFqopa4=
 github.com/rs/zerolog v1.35.1 h1:m7xQeoiLIiV0BCEY4Hs+j2NG4Gp2o2KPKmhnnLiazKI=
 github.com/rs/zerolog v1.35.1/go.mod h1:EjML9kdfa/RMA7h/6z6pYmq1ykOuA8/mjWaEvGI+jcw=
-github.com/sologenic/com-fs-utils-internal-lib/go/logger v0.0.0-20261015130520-f7a6a5e49aa5 h1:8XGX4im582morN0t0Dgid3ZZGL0ZeADhCdCgtRuFAbA=
-github.com/sologenic/com-fs-utils-internal-lib/go/logger v0.0.0-20261015130520-f7a6a5e49aa5/go.mod h1:SZF4KEqZTs9oVQ/vJBZikB+Vmb2L1x4Ir9R7myi38x8=
-github.com/sologenic/com-fs-utils-lib/models/metadata v0.0.0-20261015130520-de4f93512d97 h1:OYs0TRy/VG9PWS5zEzNdLmnhEnIdPot3k0CFI71dM94=
-github.com/sologenic/com-fs-utils-lib/models/metadata v0.0.0-20261015130520-de4f93512d97/go.mod h1:88DsKltgymkKDaelDn8PQ6NxLOCimcSDUi+x8t91obY=
+github.com/sologenic/com-fs-utils-internal-lib/go/logger v0.0.0-20261017194335-c015f8344527 h1:+32/3c1dLElSIwp5yv0eaCBnTo8E8bFTPyak3Ow8QcI=
+github.com/sologenic/com-fs-utils-internal-lib/go/logger v0.0.0-20261017194335-c015f8344527/go.mod h1:SZF4KEqZTs9oVQ/vJBZikB+Vmb2L1x4Ir9R7myi38x8=
+github.com/sologenic/com-fs-utils-lib/models/metadata v0.0.0-20261017194335-58b9490f29d1 h1:i0DtZwB8i4N/oJ++rQDSBZV6Jy5xmpx7zYp91CkAuuQ=
+github.com/sologenic/com-fs-utils-lib/models/metadata v0.0.0-20261017194335-58b9490f29d1/go.mod h1:o4O0jQytCJgYuYzqXwquG2zWrIAOwdXlNJmOvOqA2MA=
 golang.org/x/sys v0.44.0 h1:ildZl3J4uzeKP07r2F++Op7E9B29JRUy+a27EibtBTQ=
 golang.org/x/sys v0.44.0/go.mod h1:4GL1E5IUh+htKOUEOaiffhrAeqysfVGipDYzABqnCmw=
 google.golang.org/protobuf v1.36.11 h1:fV6ZwhNocDyBLK0dj+fg8ektcVegBBuEolpbTQyBNVE=
