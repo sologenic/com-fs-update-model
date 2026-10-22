@@ -13,5 +13,5 @@ require (
 	github.com/mattn/go-isatty v0.0.23 // indirect
 	github.com/rs/zerolog v1.35.1 // indirect
 	github.com/sologenic/com-fs-utils-internal-lib/go/logger v0.0.0-20261021192929-ec070c03bfa4 // indirect
-	golang.org/x/sys v0.47.0 // indirect
+	golang.org/x/sys v0.49.0 // indirect
 )
