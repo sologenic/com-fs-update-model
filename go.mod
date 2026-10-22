@@ -1,6 +1,6 @@
 module github.com/sologenic/com-fs-update-model
 
-go 1.27.1
+go 1.27.3
 
 require (
 	github.com/sologenic/com-fs-utils-lib/models/metadata v0.0.0-20261021192932-75a70c22aad8
